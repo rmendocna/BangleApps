@@ -246,10 +246,10 @@
         newFileName="recorder.log" + (maxNumber + 1) + ".csv";
         updateSettings(settings);
       }
-      var buttons={/*LANG*/"Yes":"overwrite",/*LANG*/"No":"cancel"};
+      var buttons={/*LANG*/"Y":"overwrite",/*LANG*/"N":"cancel"};
       if (newFileName) buttons[/*LANG*/"New"] = "new";
-      buttons[/*LANG*/"Append"] = "append";
-      return E.showPrompt(/*LANG*/"Overwrite\nLog " + settings.file.match(/\d+/)[0] + "?",{title:/*LANG*/"Recorder",buttons:buttons}).then(selection=>{
+      buttons[/*LANG*/"Appnd"] = "append";
+      return E.showPrompt(/*LANG*/"\nLog " + settings.file.match(/\d+/)[0] + "?",{title:/*LANG*/"Recorder",buttons:buttons}).then(selection=>{
         if (selection==="cancel") return false; // just cancel
         if (selection==="overwrite")
           require("Storage").open(settings.file,"r").erase();
