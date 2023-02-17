@@ -37,14 +37,19 @@ let draw = function() {
   let steps = Bangle.getHealthStatus("day").steps;
   const t = 6;
 
-  if (E.getBattery() < 30) {
-    // turn the warning on once we have dipped below 30%
+  if (E.getBattery() < 25) {
+    // turn the warning on once we have dipped below 25%
     batteryWarning = true;
-  } else if (E.getBattery() > 40) {
-    // turn the warning off once we have dipped above 40%
+  } else if (E.getBattery() > 30) {
+    // turn the warning off once we have dipped above 30%
     batteryWarning = false;
   }
 
+  if (time === " 0:00") {
+      Bangle.setLCDBrightness(.1);
+  } else if (time === " 7:00") {
+      Bangle.setLCDBrightness(1);
+  }
   g.reset();
   g.setColor(settings.bg);
   g.fillRect(0, 0, w, h2 - t);
